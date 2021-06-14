@@ -1,7 +1,8 @@
-package com.example.newsapiproject
+package com.example.newsapiproject.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.newsapiproject.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
