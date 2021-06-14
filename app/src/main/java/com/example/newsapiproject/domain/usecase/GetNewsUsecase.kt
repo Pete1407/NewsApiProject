@@ -6,7 +6,7 @@ import com.example.newsapiproject.domain.repository.NewsRepository
 
 class GetNewsUsecase(private val repository: NewsRepository) {
 
-    suspend fun execute():Resource<NewsResponse>{
-        return repository.getNewsHeadLines()
+    suspend fun execute(country : String,page : Int):Resource<NewsResponse>{
+        return repository.getNewsHeadLines(country, page)
     }
 }

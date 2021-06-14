@@ -6,9 +6,10 @@ import com.example.newsapiproject.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
+// collect feature function
 interface NewsRepository {
 
-    suspend fun getNewsHeadLines():Resource<NewsResponse>
+    suspend fun getNewsHeadLines(country : String,page : Int):Resource<NewsResponse>
 
     suspend fun getSearchedNews(searchQuery : String) : Resource<NewsResponse>
 

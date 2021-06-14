@@ -5,5 +5,5 @@ import retrofit2.Response
 
 interface RemoteDataSource {
 
-    suspend fun getNewsHeadLines(): Response<NewsResponse>
+    suspend fun getNewsHeadLines(country : String,page : Int): Response<NewsResponse>
 }
