@@ -61,7 +61,8 @@ dependencies {
 
     // retrofit and gson
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
 
     // coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"

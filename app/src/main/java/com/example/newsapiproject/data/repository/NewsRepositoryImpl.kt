@@ -2,6 +2,7 @@ package com.example.newsapiproject.data.repository
 
 import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
+import com.example.newsapiproject.data.repository.data_source.RemoteDataSource
 import com.example.newsapiproject.data.repository.data_source_lmpl.RemoteDataSourceImpl
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.domain.repository.NewsRepository
@@ -9,11 +10,11 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class NewsRepositoryImpl(
-    private val remoteDataSourceImpl : RemoteDataSourceImpl
+    private val remoteDataSource : RemoteDataSource
 ) : NewsRepository{
 
     override suspend fun getNewsHeadLines(country : String,page : Int): Resource<NewsResponse> {
-        return responseToResource(remoteDataSourceImpl.getNewsHeadLines(country,page))
+        return responseToResource(remoteDataSource.getNewsHeadLines(country,page))
     }
 
     private fun responseToResource(outPut : Response<NewsResponse>):Resource<NewsResponse>{

@@ -1,9 +1,8 @@
-package com.example.newsapiproject.presentation
+package com.example.newsapiproject.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
-import com.example.newsapiproject.presentation.main.MainViewModel
 import java.lang.IllegalArgumentException
 
 class MainViewModelFactory(

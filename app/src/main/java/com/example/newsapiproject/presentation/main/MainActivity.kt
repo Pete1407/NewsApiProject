@@ -1,4 +1,4 @@
-package com.example.newsapiproject.presentation
+package com.example.newsapiproject.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
