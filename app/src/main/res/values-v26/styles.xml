@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="style_description_news">
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginHorizontal">@dimen/spacing_standard</item>
+    </style>
+</resources>

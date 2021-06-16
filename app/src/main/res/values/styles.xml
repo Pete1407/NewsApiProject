@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="style_title_news" >
+        <item name="android:textSize">@dimen/font_xl</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_margin">@dimen/spacing_standard</item>
+    </style>
+
+    <style name="style_description_news">
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">@dimen/spacing_standard</item>
+        <item name="android:layout_marginRight">@dimen/spacing_standard</item>
+        <item name="android:layout_marginTop">@dimen/spacing_small</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_small</item>
+    </style>
+</resources>

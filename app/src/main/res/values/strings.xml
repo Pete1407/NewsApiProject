@@ -6,4 +6,6 @@
 
     <string name="text_news">News</string>
     <string name="text_saved">Saved</string>
+
+    <string name="test">Test</string>
 </resources>

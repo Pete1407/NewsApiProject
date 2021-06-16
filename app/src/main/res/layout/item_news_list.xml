@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        style="@style/style_title_news"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:layout_marginHorizontal="@dimen/spacing_standard"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:layout_weight="2"
+        style="@style/style_description_news"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_publishDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/spacing_small"
+        android:layout_marginHorizontal="@dimen/spacing_standard"
+        android:textSize="@dimen/font_small"
+        android:textColor="@color/gray"
+        android:layout_weight="1"
+        android:text="@string/test"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
