@@ -2,9 +2,11 @@ package com.example.newsapiproject.presentation.main
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
@@ -16,12 +18,12 @@ class MainViewModel(
 ) : ViewModel() {
     // initial mutable liveData type Resource<NewsResponse>
     var newsHeadLine : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
+    var list = ArrayList<Article>()
 
     fun getNews(context : Context,country : String,page : Int){
       try {
           newsHeadLine.postValue(Resource.Loading())
           if(checkNetworkConnected(context)){
-              // use coroutine by scope of viewmodel
               viewModelScope.launch(Dispatchers.IO) {
                   val result = getNewsUsecase.execute(country, page).data
                   result?.let {
@@ -39,7 +41,7 @@ class MainViewModel(
     }
 
     // check internet that is conntected if not show toast
-    fun checkNetworkConnected(context : Context?) : Boolean{
+    private fun checkNetworkConnected(context : Context?) : Boolean{
         context?.let {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             connectivityManager?.let {
@@ -57,6 +59,9 @@ class MainViewModel(
 
     }
 
+    fun listIsEmpty():Boolean{
+        return (list.size > 0)
+    }
 
 
 

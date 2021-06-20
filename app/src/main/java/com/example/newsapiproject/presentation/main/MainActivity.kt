@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(),BaseState {
 
     @Inject
     lateinit var factory : MainViewModelFactory
-    lateinit var vm : MainViewModel
+    lateinit var viewModel : MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(),BaseState {
     }
 
     private fun setViewModel(){
-        vm = ViewModelProvider(this,factory).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this,factory).get(MainViewModel::class.java)
     }
 
     override fun initViewModel() {

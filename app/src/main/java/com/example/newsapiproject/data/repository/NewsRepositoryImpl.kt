@@ -1,5 +1,6 @@
 package com.example.newsapiproject.data.repository
 
+import android.util.Log
 import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.repository.data_source.RemoteDataSource
@@ -23,6 +24,8 @@ class NewsRepositoryImpl(
             outPut.body()?.let { result ->
                 return Resource.Success(result)
             }
+        }else{
+            Log.i("result","UnSuccess: $success")
         }
 
         return Resource.Error(outPut.message(),null)

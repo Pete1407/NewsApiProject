@@ -1,5 +1,6 @@
 package com.example.newsapiproject.presentation.main.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,12 +20,18 @@ class NewsAdapter(val list: ArrayList<Article>) :
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        val item = list[position]
+        val item = list.get(position)
         holder.setItem(item)
     }
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    fun updateData(data : ArrayList<Article>){
+        list.clear()
+        list.addAll(data)
+        notifyDataSetChanged()
     }
 
     inner class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -35,6 +42,7 @@ class NewsAdapter(val list: ArrayList<Article>) :
             binding.tvName.text = article.title
             binding.tvDescription.text = article.description
             binding.tvPublishDate.text = article.publishedAt
+            Log.d("debug","${article.urlToImage}")
             Glide.with(binding.imgArticle.context)
                 .load(article.urlToImage)
                 .into(binding.imgArticle)
