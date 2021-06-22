@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.BaseStateFragment
 import com.example.newsapiproject.data.util.Resource
@@ -26,7 +28,10 @@ class NewsFragment : Fragment(),BaseStateFragment {
     lateinit var vm : MainViewModel
     private lateinit var adapter : NewsAdapter
     private var page : Int = 1
-
+    private var isScrolling = false
+    private var isLoading = false
+    private var isLastPage = false
+    var pages = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +51,14 @@ class NewsFragment : Fragment(),BaseStateFragment {
                     hideLoading()
                     resource.data?.let {
                         var newData = ArrayList(it.articles)
+                        Log.i("result","totalResult --> ${it.totalResults}")
                         adapter.updateData(newData)
+                        if(it.totalResults %20 == 0){
+                            pages = it.totalResults / 20
+                        }else{
+                            pages = it.totalResults / 20 + 1
+                        }
+                        isLastPage = page == pages
                     }
 
                 }
@@ -71,18 +83,49 @@ class NewsFragment : Fragment(),BaseStateFragment {
         adapter = NewsAdapter(vm.list)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.spacing_small)))
+        binding.recyclerView.addOnScrollListener(scrollListener)
         binding.recyclerView.adapter = adapter
     }
 
     override fun showLoading() {
+        isLoading = true
         binding.progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
+        isLoading = false
         binding.progressBar.visibility = View.GONE
+    }
+
+    val scrollListener = object : RecyclerView.OnScrollListener(){
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                isScrolling = true
+            }
+        }
+
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            val layoutManager = binding.recyclerView.layoutManager as LinearLayoutManager
+            // จำนวนของ item ทั้งหมดตต่อ 1 หน้า (ในที่นี้คือ 1 page = 20 item)
+            val currentList = layoutManager.itemCount
+            // จำนวนของ item ที่มองเห็นในหน้าจอ ณ ขณะนั้น
+            val totalVisibleItem = layoutManager.childCount
+            val topItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val checkLastItem = topItemPosition + totalVisibleItem >= currentList
+            val shouldPaginate = !isLoading && !isLastPage && checkLastItem && isScrolling
+            if(shouldPaginate){
+                page++
+                vm.getNews(requireContext(),"us",page)
+                isScrolling = false
+            }
+        }
     }
 
     companion object{
         const val COUNTRY = "us"
+        const val TOTAL_NUMBER_NEWS = 20
     }
 }
