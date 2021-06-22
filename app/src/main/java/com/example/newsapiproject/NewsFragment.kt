@@ -16,6 +16,7 @@ import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.databinding.FragmentNewsBinding
 import com.example.newsapiproject.presentation.main.MainActivity
 import com.example.newsapiproject.presentation.main.MainViewModel
+import com.example.newsapiproject.presentation.main.MarginItemDecoration
 import com.example.newsapiproject.presentation.main.adapter.NewsAdapter
 
 
@@ -69,6 +70,7 @@ class NewsFragment : Fragment(),BaseStateFragment {
     private fun initUI(){
         adapter = NewsAdapter(vm.list)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.spacing_small)))
         binding.recyclerView.adapter = adapter
     }
 

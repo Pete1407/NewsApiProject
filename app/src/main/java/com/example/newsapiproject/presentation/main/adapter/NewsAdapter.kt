@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.newsapiproject.R
 import com.example.newsapiproject.data.model.Article
+import com.example.newsapiproject.data.util.SimpleDate
 import com.example.newsapiproject.databinding.ItemNewsListBinding
 
 class NewsAdapter(val list: ArrayList<Article>) :
@@ -41,7 +42,9 @@ class NewsAdapter(val list: ArrayList<Article>) :
         fun setItem(article: Article){
             binding.tvName.text = article.title
             binding.tvDescription.text = article.description
-            binding.tvPublishDate.text = article.publishedAt
+            val convertDateFormat = SimpleDate.setDateFormat(article.publishedAt)
+            binding.tvPublishDate.text = convertDateFormat
+            //binding.tvPublishDate.text = article.publishedAt
             Log.d("debug","${article.urlToImage}")
             Glide.with(binding.imgArticle.context)
                 .load(article.urlToImage)

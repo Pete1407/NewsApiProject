@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/spacing_small"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/spacing_small"
+    android:layout_marginEnd="@dimen/spacing_small"
+    android:layout_marginTop="@dimen/spacing_standard"
+    android:layout_marginBottom="@dimen/spacing_standard"
     android:background="@color/black"
-    android:orientation="vertical">
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_name"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/spacing_standard">
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/test"
-        android:textColor="@android:color/white"
-        style="@style/style_title_news"/>
+        android:orientation="vertical">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test"
+            android:textColor="@android:color/black"
+            style="@style/style_title_news"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_article"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/spacing_small"
-        android:layout_marginHorizontal="@dimen/spacing_standard"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_small"
+            android:layout_marginHorizontal="@dimen/spacing_standard"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/test"
-        android:textColor="@android:color/white"
-        android:layout_weight="2"
-        style="@style/style_description_news"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test"
+            android:textColor="@android:color/black"
+            android:layout_weight="2"
+            style="@style/style_description_news"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_publishDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/spacing_small"
-        android:layout_marginHorizontal="@dimen/spacing_standard"
-        android:textSize="@dimen/font_small"
-        android:textColor="@color/gray"
-        android:layout_weight="1"
-        android:text="@string/test"/>
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_publishDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/spacing_small"
+            android:layout_marginHorizontal="@dimen/spacing_standard"
+            android:textSize="@dimen/font_small"
+            android:textColor="@color/gray"
+            android:layout_weight="1"
+            android:text="@string/test"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>
