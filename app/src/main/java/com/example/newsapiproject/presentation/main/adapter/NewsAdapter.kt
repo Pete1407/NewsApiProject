@@ -11,8 +11,13 @@ import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.util.SimpleDate
 import com.example.newsapiproject.databinding.ItemNewsListBinding
 
-class NewsAdapter(val list: ArrayList<Article>) :
-    RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter(val list: ArrayList<Article>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+
+    private var clickListener : ((Article) -> Unit)? = null
+
+    fun setOnClickListenr(listener : (article : Article) -> Unit){
+        clickListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
@@ -49,6 +54,10 @@ class NewsAdapter(val list: ArrayList<Article>) :
             Glide.with(binding.imgArticle.context)
                 .load(article.urlToImage)
                 .into(binding.imgArticle)
+
+            binding.root.setOnClickListener {
+                clickListener?.invoke(article)
+            }
         }
     }
 }

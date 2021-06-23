@@ -29,5 +29,8 @@
         android:id="@+id/infoFragment"
         android:name="com.example.newsapiproject.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <argument android:name="key_select"
+            app:argType="com.example.newsapiproject.data.model.Article" />
+    </fragment>
 </navigation>

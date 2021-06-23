@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Toast
-import androidx.core.view.isVisible
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.BaseStateFragment
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.databinding.FragmentNewsBinding
@@ -81,10 +79,22 @@ class NewsFragment : Fragment(),BaseStateFragment {
 
     private fun initUI(){
         adapter = NewsAdapter(vm.list)
+        initListener()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.spacing_small)))
         binding.recyclerView.addOnScrollListener(scrollListener)
         binding.recyclerView.adapter = adapter
+
+    }
+
+    override fun initListener() {
+        adapter.setOnClickListenr { data ->
+            val bundle = Bundle()
+            bundle.apply {
+                this.putSerializable(PARAM_SELECTED,data)
+            }
+            findNavController().navigate(R.id.action_newsFragment_to_infoFragment,bundle)
+        }
     }
 
     override fun showLoading() {
@@ -126,6 +136,6 @@ class NewsFragment : Fragment(),BaseStateFragment {
 
     companion object{
         const val COUNTRY = "us"
-        const val TOTAL_NUMBER_NEWS = 20
+        const val PARAM_SELECTED = "key_select"
     }
 }
