@@ -6,6 +6,6 @@
     <string name="title_detail">Detail</string>
     <string name="text_news">News</string>
     <string name="text_saved">Saved</string>
-
-    <string name="test">Test</string>
+    <string name="newsApi">NewsAPI</string>
+    <string name="fav_news">Favorite News</string>
 </resources>

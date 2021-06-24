@@ -88,6 +88,7 @@ class NewsFragment : Fragment(),BaseStateFragment {
     }
 
     override fun initListener() {
+        Log.i("debug","click choose item ...")
         adapter.setOnClickListenr { data ->
             val bundle = Bundle()
             bundle.apply {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="style_title_news" >
         <item name="android:textSize">@dimen/font_xl</item>
         <item name="android:textStyle">bold</item>

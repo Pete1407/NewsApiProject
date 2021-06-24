@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsapiproject.R
 import com.example.newsapiproject.data.util.BaseState
@@ -17,7 +20,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(),BaseState {
 
     private lateinit var binding : ActivityMainBinding
-
+    private lateinit var navController : NavController
     @Inject
     lateinit var factory : MainViewModelFactory
     lateinit var viewModel : MainViewModel
@@ -27,8 +30,10 @@ class MainActivity : AppCompatActivity(),BaseState {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHost = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
-        val navController = navHost.navController
+        navController = navHost.navController
         binding.bottomNavigation.setupWithNavController(navController)
+        setSupportActionBar(binding.toolbar)
+        setupActionBarWithNavController(navController)
         initViewModel()
 
     }
@@ -39,6 +44,10 @@ class MainActivity : AppCompatActivity(),BaseState {
 
     override fun initViewModel() {
         setViewModel()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp() || navController.navigateUp()
     }
 
     override fun showLoading() {

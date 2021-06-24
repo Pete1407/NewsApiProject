@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/ic_baseline_archive_24.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/ic_icon_news.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/selector_bottom_nav.xml" value="0.1065" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25831298828125" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.1571685791015625" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.16458333333333333" />
