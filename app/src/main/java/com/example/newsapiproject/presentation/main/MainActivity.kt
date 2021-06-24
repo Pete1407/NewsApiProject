@@ -5,9 +5,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavGraph
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.newsapiproject.R
@@ -32,8 +34,7 @@ class MainActivity : AppCompatActivity(),BaseState {
         val navHost = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
         navController = navHost.navController
         binding.bottomNavigation.setupWithNavController(navController)
-        setSupportActionBar(binding.toolbar)
-        setupActionBarWithNavController(navController)
+        binding.toolbar.setupWithNavController(navController,AppBarConfiguration(navController.graph))
         initViewModel()
 
     }
@@ -46,9 +47,9 @@ class MainActivity : AppCompatActivity(),BaseState {
         setViewModel()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || navController.navigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        return super.onSupportNavigateUp() || navController.navigateUp()
+//    }
 
     override fun showLoading() {
         TODO("Not yet implemented")
