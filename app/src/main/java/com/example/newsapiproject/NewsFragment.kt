@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ import com.example.newsapiproject.presentation.main.MarginItemDecoration
 import com.example.newsapiproject.presentation.main.adapter.NewsAdapter
 
 
-class NewsFragment : Fragment(),BaseStateFragment {
+class NewsFragment : Fragment(),BaseStateFragment,SearchView.OnQueryTextListener {
 
     private lateinit var binding : FragmentNewsBinding
     lateinit var vm : MainViewModel
@@ -89,6 +90,7 @@ class NewsFragment : Fragment(),BaseStateFragment {
 
     override fun initListener() {
         Log.i("debug","click choose item ...")
+        binding.searchView.setOnQueryTextListener(this)
         adapter.setOnClickListenr { data ->
             val bundle = Bundle()
             bundle.apply {
@@ -133,6 +135,16 @@ class NewsFragment : Fragment(),BaseStateFragment {
                 isScrolling = false
             }
         }
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.d("debug","text --> $newText")
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.d("debug","query --> $query")
+        return true
     }
 
     companion object{

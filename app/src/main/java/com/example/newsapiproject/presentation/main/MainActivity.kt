@@ -47,15 +47,12 @@ class MainActivity : AppCompatActivity(),BaseState {
         setViewModel()
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        return super.onSupportNavigateUp() || navController.navigateUp()
-//    }
 
     override fun showLoading() {
-        TODO("Not yet implemented")
+
     }
 
     override fun hideLoading() {
-        TODO("Not yet implemented")
+
     }
 }

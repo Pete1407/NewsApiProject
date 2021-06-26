@@ -7,7 +7,7 @@ import retrofit2.Response
 
 class GetSearchNewsUsecase(private val newsRepository: NewsRepository) {
 
-    suspend fun execute(queryString: String): Resource<NewsResponse> {
-        return newsRepository.getSearchedNews(queryString)
+    suspend fun execute(country : String,queryString: String): Resource<NewsResponse> {
+        return newsRepository.getSearchedNews(country,queryString)
     }
 }

@@ -11,7 +11,7 @@ interface NewsRepository {
 
     suspend fun getNewsHeadLines(country : String,page : Int):Resource<NewsResponse>
 
-    suspend fun getSearchedNews(searchQuery : String) : Resource<NewsResponse>
+    suspend fun getSearchedNews(country : String,searchQuery : String) : Resource<NewsResponse>
 
     suspend fun saveNew(article: Article)
 

@@ -16,9 +16,6 @@ import com.example.newsapiproject.databinding.FragmentInfoBinding
 class InfoFragment : Fragment(),BaseStateFragment {
     private lateinit var binding : FragmentInfoBinding
     private var article : Article? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

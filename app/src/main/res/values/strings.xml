@@ -8,4 +8,6 @@
     <string name="text_saved">Saved</string>
     <string name="newsApi">NewsAPI</string>
     <string name="fav_news">Favorite News</string>
+
+    <string name="search_placeholder">News name</string>
 </resources>
