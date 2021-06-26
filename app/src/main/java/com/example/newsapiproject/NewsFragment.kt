@@ -138,12 +138,24 @@ class NewsFragment : Fragment(),BaseStateFragment,SearchView.OnQueryTextListener
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        Log.d("debug","text --> $newText")
+        if(newText.isNullOrBlank()){
+            Log.d("debug","null or blank")
+            vm.getNews(requireContext(),"us",page)
+        }else{
+            Log.d("debug","text --> $newText")
+            vm.getSearchNewsHeadLines(newText)
+        }
         return true
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        Log.d("debug","query --> $query")
+        if(query.isNullOrBlank()){
+            Log.d("debug","null or blank")
+            vm.getNews(requireContext(),"us",page)
+        }else{
+            Log.d("debug","text --> $query")
+            vm.getSearchNewsHeadLines(query)
+        }
         return true
     }
 

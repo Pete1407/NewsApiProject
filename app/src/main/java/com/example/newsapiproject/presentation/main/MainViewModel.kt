@@ -10,11 +10,13 @@ import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
+import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val getNewsUsecase: GetNewsUsecase
+    private val getNewsUsecase: GetNewsUsecase,
+    private val searchNewsUsecase: GetSearchNewsUsecase
 ) : ViewModel() {
     // initial mutable liveData type Resource<NewsResponse>
     var newsHeadLine : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
@@ -59,11 +61,18 @@ class MainViewModel(
 
     }
 
-    fun listIsEmpty():Boolean{
-        return (list.size > 0)
+    fun getSearchNewsHeadLines(query : String){
+        newsHeadLine.postValue(Resource.Loading())
+     try {
+         viewModelScope.launch(Dispatchers.IO){
+             val request = searchNewsUsecase.execute("us",query)
+             request.data?.let {
+                 newsHeadLine.postValue(Resource.Success(request.data))
+             }
+         }
+     }catch (ex : Exception){
+         newsHeadLine.postValue(Resource.Error(ex.message.toString()))
+     }
+
     }
-
-
-
-
 }
