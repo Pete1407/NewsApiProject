@@ -6,7 +6,11 @@ import androidx.room.TypeConverters
 import com.example.newsapiproject.data.database.converter.SourceConverter
 import com.example.newsapiproject.data.model.Article
 
-@Database(entities = [Article::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Article::class],
+    version = 1,
+    exportSchema = false
+)
 @TypeConverters(SourceConverter::class)
 abstract class NewsDataBase : RoomDatabase() {
 

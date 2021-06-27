@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(
-    tableName = "news_db"
+    tableName = "article_table"
 )
 data class Article(
     @PrimaryKey(autoGenerate = true)
