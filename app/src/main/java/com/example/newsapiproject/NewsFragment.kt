@@ -20,7 +20,6 @@ import com.example.newsapiproject.presentation.main.MainViewModel
 import com.example.newsapiproject.presentation.main.MarginItemDecoration
 import com.example.newsapiproject.presentation.main.adapter.NewsAdapter
 
-
 class NewsFragment : Fragment(),BaseStateFragment,SearchView.OnQueryTextListener {
 
     private lateinit var binding : FragmentNewsBinding

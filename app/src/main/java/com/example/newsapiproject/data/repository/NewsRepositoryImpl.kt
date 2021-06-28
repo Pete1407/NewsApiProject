@@ -3,6 +3,7 @@ package com.example.newsapiproject.data.repository
 import android.util.Log
 import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
+import com.example.newsapiproject.data.repository.data_source.LocalDataSource
 import com.example.newsapiproject.data.repository.data_source.RemoteDataSource
 import com.example.newsapiproject.data.repository.data_source_lmpl.RemoteDataSourceImpl
 import com.example.newsapiproject.data.util.Resource
@@ -11,7 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class NewsRepositoryImpl(
-    private val remoteDataSource : RemoteDataSource
+    private val remoteDataSource : RemoteDataSource,
+    private val localDataSource: LocalDataSource
 ) : NewsRepository{
 
     override suspend fun getNewsHeadLines(country : String,page : Int): Resource<NewsResponse> {
@@ -37,7 +39,7 @@ class NewsRepositoryImpl(
     }
 
     override suspend fun saveNew(article: Article) {
-        TODO("Not yet implemented")
+        localDataSource.saveArticle(article)
     }
 
     override suspend fun deleteNew(article: Article) {

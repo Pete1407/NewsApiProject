@@ -47,7 +47,7 @@ class NewsAdapter(val list: ArrayList<Article>) : RecyclerView.Adapter<NewsAdapt
         fun setItem(article: Article){
             binding.tvName.text = article.title
             binding.tvDescription.text = article.description
-            val convertDateFormat = SimpleDate.setDateFormat(article.publishedAt)
+            val convertDateFormat = article.publishedAt?.let { SimpleDate.setDateFormat(it) }
             binding.tvPublishDate.text = convertDateFormat
             //binding.tvPublishDate.text = article.publishedAt
             Log.d("debug","${article.urlToImage}")
