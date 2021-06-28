@@ -13,7 +13,7 @@ class SourceConverter {
     }
 
     @TypeConverter
-    fun getSource(name : String):Source{
+    fun getSourceToName(name : String):Source{
         return Source(name,name)
     }
 }
