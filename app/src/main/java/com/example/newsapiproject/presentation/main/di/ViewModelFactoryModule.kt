@@ -2,6 +2,7 @@ package com.example.newsapiproject.presentation.main.di
 
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
 import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
+import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
 import com.example.newsapiproject.presentation.main.MainViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -17,8 +18,9 @@ class ViewModelFactoryModule {
     @Provides
     fun provideMainViewModelFactory(
         getNewsUsecase: GetNewsUsecase,
-        searchNewsUsecase: GetSearchNewsUsecase
+        searchNewsUsecase: GetSearchNewsUsecase,
+        saveNewsUsecase: SaveNewsUsecase
     ): MainViewModelFactory {
-        return MainViewModelFactory(getNewsUsecase,searchNewsUsecase)
+        return MainViewModelFactory(getNewsUsecase,searchNewsUsecase,saveNewsUsecase)
     }
 }

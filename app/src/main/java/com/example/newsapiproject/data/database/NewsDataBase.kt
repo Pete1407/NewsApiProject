@@ -11,9 +11,7 @@ import com.example.newsapiproject.data.model.Article
     version = 1,
     exportSchema = false
 )
-@TypeConverters(
-    SourceConverter::class
-)
+@TypeConverters(SourceConverter::class)
 abstract class NewsDataBase : RoomDatabase() {
 
     abstract fun getDao():NewsDao

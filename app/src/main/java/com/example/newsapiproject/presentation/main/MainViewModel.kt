@@ -11,12 +11,14 @@ import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
 import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
+import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val getNewsUsecase: GetNewsUsecase,
-    private val searchNewsUsecase: GetSearchNewsUsecase
+    private val searchNewsUsecase: GetSearchNewsUsecase,
+    private val saveNewsUsecase: SaveNewsUsecase
 ) : ViewModel() {
     // initial mutable liveData type Resource<NewsResponse>
     var newsHeadLine : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
@@ -28,6 +30,7 @@ class MainViewModel(
           if(checkNetworkConnected(context)){
               viewModelScope.launch(Dispatchers.IO) {
                   val result = getNewsUsecase.execute(country, page).data
+                  Log.i("result","result --> $result")
                   result?.let {
                       newsHeadLine.postValue(Resource.Success(it))
                   }
