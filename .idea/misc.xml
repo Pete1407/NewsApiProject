@@ -6,12 +6,13 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.11354166666666667" />
         <entry key="app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.1165" />
         <entry key="app/src/main/res/drawable/ic_baseline_archive_24.xml" value="0.1165" />
+        <entry key="app/src/main/res/drawable/ic_clear.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_icon_news.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/selector_bottom_nav.xml" value="0.1065" />
         <entry key="app/src/main/res/font/fonts.xml" value="0.1171875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25831298828125" />
         <entry key="app/src/main/res/layout/custom_searchview.xml" value="0.26932373046875" />
-        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.1571685791015625" />
+        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.1747589111328125" />
         <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/item_news_list.xml" value="0.2569249471028646" />

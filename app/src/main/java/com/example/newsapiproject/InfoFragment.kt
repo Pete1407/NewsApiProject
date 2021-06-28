@@ -31,8 +31,10 @@ class InfoFragment : Fragment(),BaseStateFragment {
         val args : InfoFragmentArgs by navArgs()
         article = args.keySelect
         Log.d("debug","$article")
-        if(article!!.url!=" "){
-            binding.webView.loadUrl(article!!.url)
+        article!!.url?.let {
+            if(it.isNullOrBlank()){
+                binding.webView.loadUrl(it)
+            }
         }
 
     }

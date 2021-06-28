@@ -9,10 +9,10 @@ import com.example.newsapiproject.data.model.Article
 @Dao
 interface NewsDao {
 
-    @Insert(entity = Article::class,onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveArticle(article : Article)
 
-    @Query("SELECT * FROM article_table")
+    @Query("SELECT * FROM article")
     suspend fun getSavedArticles():List<Article>
 
 }
