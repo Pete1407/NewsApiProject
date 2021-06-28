@@ -12,7 +12,7 @@ interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveArticle(article : Article)
 
-    @Query("SELECT * FROM article_table")
-    suspend fun getSavedArticles():List<Article>
+//    @Query("SELECT * FROM article_table")
+//    suspend fun getSavedArticles():List<Article>
 
 }

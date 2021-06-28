@@ -64,7 +64,7 @@ dependencies {
 
     // hilt dependency injection
     implementation("com.google.dagger:hilt-android:$hilt_version")
-    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // retrofit and gson
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
