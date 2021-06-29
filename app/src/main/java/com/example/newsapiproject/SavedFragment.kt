@@ -37,7 +37,7 @@ class SavedFragment : Fragment(),BaseStateFragment {
     }
 
     override fun hideLoading() {
-        
+
     }
 
 

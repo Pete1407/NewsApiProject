@@ -15,12 +15,13 @@
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.1747589111328125" />
         <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/layout/item_article_save.xml" value="0.34040222167968753" />
         <entry key="app/src/main/res/layout/item_news_list.xml" value="0.2569249471028646" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.16458333333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
