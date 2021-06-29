@@ -4,16 +4,19 @@ import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.example.newsapiproject.data.model.Source
 
-@ProvidedTypeConverter
 class SourceConverter {
 
     @TypeConverter
-    fun getNameFromSource(source : Source):String{
-        return source.name
+    fun getNameFromSource(source : Source?):String{
+        source?.let {
+            return it.name
+        }?:kotlin.run{
+            return ""
+        }
     }
 
     @TypeConverter
-    fun getSourceToName(name : String):Source{
+    fun getSourceFromName(name : String):Source{
         return Source(name,name)
     }
 }

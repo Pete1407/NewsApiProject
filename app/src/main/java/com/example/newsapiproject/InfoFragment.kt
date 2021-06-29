@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.util.BaseStateFragment
 import com.example.newsapiproject.databinding.FragmentInfoBinding
+import com.google.android.material.snackbar.Snackbar
 
 class InfoFragment : Fragment(),BaseStateFragment {
     private lateinit var binding : FragmentInfoBinding
@@ -29,18 +30,18 @@ class InfoFragment : Fragment(),BaseStateFragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val args : InfoFragmentArgs by navArgs()
+        initListener()
         article = args.keySelect
-        Log.d("debug","$article")
-        article!!.url?.let {
-            if(it.isNullOrBlank()){
-                binding.webView.loadUrl(it)
-            }
-        }
+        Log.d("debug","url of web --> ${article!!.url}")
+        article!!.url?.let { binding.webView.loadUrl(it) }
 
     }
 
     override fun initListener() {
-
+        binding.likeButton.setOnClickListener {
+            val snackBar = Snackbar.make(it,resources.getString(R.string.save_article),Snackbar.LENGTH_SHORT)
+            snackBar.show()
+        }
     }
 
     override fun showLoading() {

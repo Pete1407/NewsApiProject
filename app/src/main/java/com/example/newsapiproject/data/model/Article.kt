@@ -1,9 +1,6 @@
 package com.example.newsapiproject.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+import androidx.room.*
 import com.example.newsapiproject.data.database.converter.SourceConverter
 import java.io.Serializable
 @Entity(
@@ -20,8 +17,7 @@ data class Article(
     val description: String?,
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String?,
-
-    @TypeConverters(SourceConverter::class)
+    @ColumnInfo(name = "source")
     val source: Source?,
     @ColumnInfo(name = "title")
     val title: String?,

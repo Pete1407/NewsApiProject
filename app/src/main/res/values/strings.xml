@@ -10,4 +10,5 @@
     <string name="fav_news">Favorite News</string>
 
     <string name="search_placeholder">News name</string>
+    <string name="save_article">Save this article :)</string>
 </resources>
