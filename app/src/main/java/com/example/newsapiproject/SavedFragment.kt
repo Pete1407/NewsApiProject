@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.newsapiproject.data.util.BaseStateFragment
 import com.example.newsapiproject.databinding.FragmentSavedBinding
 
 
-class SavedFragment : Fragment() {
+class SavedFragment : Fragment(),BaseStateFragment {
     private lateinit var binding : FragmentSavedBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,18 @@ class SavedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+    }
+
+    override fun initListener() {
+
+    }
+
+    override fun showLoading() {
+
+    }
+
+    override fun hideLoading() {
         
     }
 

@@ -76,6 +76,11 @@ class MainViewModel(
      }catch (ex : Exception){
          newsHeadLine.postValue(Resource.Error(ex.message.toString()))
      }
+    }
 
+    fun saveFavoriteArticle(article : Article){
+        viewModelScope.launch(Dispatchers.IO){
+            saveNewsUsecase.execute(article)
+        }
     }
 }
