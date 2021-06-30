@@ -1,6 +1,7 @@
 package com.example.newsapiproject.presentation.main.di
 
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
+import com.example.newsapiproject.domain.usecase.GetSaveNewsUsecase
 import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
 import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
 import com.example.newsapiproject.presentation.main.MainViewModelFactory
@@ -19,8 +20,14 @@ class ViewModelFactoryModule {
     fun provideMainViewModelFactory(
         getNewsUsecase: GetNewsUsecase,
         searchNewsUsecase: GetSearchNewsUsecase,
-        saveNewsUsecase: SaveNewsUsecase
+        saveNewsUsecase: SaveNewsUsecase,
+        getSaveNewsUsecase: GetSaveNewsUsecase
     ): MainViewModelFactory {
-        return MainViewModelFactory(getNewsUsecase,searchNewsUsecase,saveNewsUsecase)
+        return MainViewModelFactory(
+            getNewsUsecase,
+            searchNewsUsecase,
+            saveNewsUsecase,
+            getSaveNewsUsecase
+        )
     }
 }

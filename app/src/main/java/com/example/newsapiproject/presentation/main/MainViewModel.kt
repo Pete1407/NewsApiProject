@@ -10,20 +10,26 @@ import com.example.newsapiproject.data.model.Article
 import com.example.newsapiproject.data.model.NewsResponse
 import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.domain.usecase.GetNewsUsecase
+import com.example.newsapiproject.domain.usecase.GetSaveNewsUsecase
 import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
 import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val getNewsUsecase: GetNewsUsecase,
     private val searchNewsUsecase: GetSearchNewsUsecase,
-    private val saveNewsUsecase: SaveNewsUsecase
+    private val saveNewsUsecase: SaveNewsUsecase,
+    private val getSaveNewsUsecase: GetSaveNewsUsecase
 ) : ViewModel() {
     // initial mutable liveData type Resource<NewsResponse>
     var newsHeadLine : MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var list = ArrayList<Article>()
-
+    var savedList = MutableLiveData<ArrayList<Article>>()
     fun getNews(context : Context,country : String,page : Int){
       try {
           newsHeadLine.postValue(Resource.Loading())
@@ -83,4 +89,15 @@ class MainViewModel(
             saveNewsUsecase.execute(article)
         }
     }
+
+    fun getSavedArticleList(){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = getSaveNewsUsecase.execute()
+            result.collect {
+                savedList.postValue(ArrayList(it))
+            }
+
+        }
+    }
+
 }

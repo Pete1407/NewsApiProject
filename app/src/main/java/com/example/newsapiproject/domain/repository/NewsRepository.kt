@@ -17,5 +17,5 @@ interface NewsRepository {
 
     suspend fun deleteNew(article : Article)
 
-    fun getSavedNews():Flow<List<Article>>
+    suspend fun getSavedNews():Flow<List<Article>>
 }

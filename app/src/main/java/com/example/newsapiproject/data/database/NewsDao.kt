@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.newsapiproject.data.model.Article
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface NewsDao {
@@ -13,6 +14,6 @@ interface NewsDao {
     suspend fun saveArticle(article : Article)
 
     @Query("SELECT * FROM article_table")
-    suspend fun getSavedArticles():List<Article>
+    fun getSavedArticles(): Flow<List<Article>>
 
 }
