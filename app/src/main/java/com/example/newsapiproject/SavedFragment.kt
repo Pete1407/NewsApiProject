@@ -6,22 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapiproject.data.util.BaseStateFragment
+import com.example.newsapiproject.data.util.Resource
 import com.example.newsapiproject.databinding.FragmentSavedBinding
 import com.example.newsapiproject.presentation.main.MainActivity
 import com.example.newsapiproject.presentation.main.MainViewModel
+import com.example.newsapiproject.presentation.main.MarginItemDecoration
+import com.example.newsapiproject.presentation.main.adapter.ItemAdapter
 
 
-class SavedFragment : Fragment(),BaseStateFragment {
-    private lateinit var binding : FragmentSavedBinding
-    private lateinit var vm : MainViewModel
+class SavedFragment : Fragment(), BaseStateFragment {
+    private lateinit var binding: FragmentSavedBinding
+    private lateinit var vm: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSavedBinding.inflate(inflater,container,false)
+        binding = FragmentSavedBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,18 +36,35 @@ class SavedFragment : Fragment(),BaseStateFragment {
         getNewsList()
     }
 
-    private fun initViewModel(){
+    private fun initViewModel() {
         vm = (requireActivity() as MainActivity).viewModel
     }
 
-    private fun getNewsList(){
+    private fun getNewsList() {
         vm.getSavedArticleList()
-        vm.savedList.observe(viewLifecycleOwner, Observer {
-            Log.d("debug","data --> ${it.size}")
-            it.forEach { item ->
-                Log.d("debug","${item.title}")
+        vm.savedList.observe(viewLifecycleOwner, Observer { resource ->
+            when(resource){
+                is Resource.Loading -> showLoading()
+                is Resource.Success -> {
+                    hideLoading()
+                    resource.data?.let{
+                        val itemAdapter = ItemAdapter(it)
+                        val layoutManager = LinearLayoutManager(requireContext())
+                        binding.recyclerView.apply {
+                            this.addItemDecoration(
+                                MarginItemDecoration(
+                                    requireActivity().resources.getDimensionPixelSize(
+                                        R.dimen.spacing_small
+                                    )
+                                )
+                            )
+                            this.layoutManager = layoutManager
+                            this.adapter = itemAdapter
+                        }
+                    }
+                }
+                else -> {}
             }
-
         })
     }
 

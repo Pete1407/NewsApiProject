@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/spacing_standard"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/spacing_small">
+    app:cardCornerRadius="@dimen/spacing_small"
+    app:cardElevation="5dp">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
             android:textColor="@color/orange"
             android:layout_marginHorizontal="@dimen/spacing_small"
             android:layout_marginVertical="@dimen/spacing_small"
+            android:textSize="@dimen/spacing_large"
             android:text="test"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -26,7 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_small"
-            android:layout_marginVertical="@dimen/spacing_small"/>
+            android:layout_marginVertical="@dimen/spacing_small"
+            android:textColor="@color/black"
+            android:textSize="@dimen/spacing_standard"
+            android:text="Test"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>
