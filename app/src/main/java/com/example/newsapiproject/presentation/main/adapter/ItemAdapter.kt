@@ -25,6 +25,11 @@ class ItemAdapter(val list: ArrayList<Article>) :
         return list.size
     }
 
+    fun deleteItem(position : Int){
+        list.removeAt(position)
+        notifyDataSetChanged()
+    }
+
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val binding = ItemArticleSaveBinding.bind(view)

@@ -1,9 +1,6 @@
 package com.example.newsapiproject.presentation.main.di
 
-import com.example.newsapiproject.domain.usecase.GetNewsUsecase
-import com.example.newsapiproject.domain.usecase.GetSaveNewsUsecase
-import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
-import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
+import com.example.newsapiproject.domain.usecase.*
 import com.example.newsapiproject.presentation.main.MainViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -21,13 +18,15 @@ class ViewModelFactoryModule {
         getNewsUsecase: GetNewsUsecase,
         searchNewsUsecase: GetSearchNewsUsecase,
         saveNewsUsecase: SaveNewsUsecase,
-        getSaveNewsUsecase: GetSaveNewsUsecase
+        getSaveNewsUsecase: GetSaveNewsUsecase,
+        deleteNewsUsecase: DeleteNewsUsecase
     ): MainViewModelFactory {
         return MainViewModelFactory(
             getNewsUsecase,
             searchNewsUsecase,
             saveNewsUsecase,
-            getSaveNewsUsecase
+            getSaveNewsUsecase,
+            deleteNewsUsecase
         )
     }
 }

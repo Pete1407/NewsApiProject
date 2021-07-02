@@ -2,17 +2,15 @@ package com.example.newsapiproject.presentation.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.newsapiproject.domain.usecase.GetNewsUsecase
-import com.example.newsapiproject.domain.usecase.GetSaveNewsUsecase
-import com.example.newsapiproject.domain.usecase.GetSearchNewsUsecase
-import com.example.newsapiproject.domain.usecase.SaveNewsUsecase
+import com.example.newsapiproject.domain.usecase.*
 import java.lang.IllegalArgumentException
 
 class MainViewModelFactory(
     val getNewsUsecase: GetNewsUsecase,
     val searchNewsUsecase: GetSearchNewsUsecase,
     val saveNewsUsecase: SaveNewsUsecase,
-    val getSaveNewsUsecase: GetSaveNewsUsecase
+    val getSaveNewsUsecase: GetSaveNewsUsecase,
+    val deleteNewsUsecase: DeleteNewsUsecase
     ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -21,7 +19,8 @@ class MainViewModelFactory(
                 getNewsUsecase,
                 searchNewsUsecase,
                 saveNewsUsecase,
-                getSaveNewsUsecase
+                getSaveNewsUsecase,
+                deleteNewsUsecase
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class")

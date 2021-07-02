@@ -8,4 +8,6 @@ interface LocalDataSource  {
     suspend fun saveArticle(article : Article)
 
     suspend fun getSavedArticle(): Flow<List<Article>>
+
+    suspend fun deleteArticle(id : Int)
 }

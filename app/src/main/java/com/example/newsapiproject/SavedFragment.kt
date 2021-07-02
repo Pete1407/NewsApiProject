@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.newsapiproject.data.util.BaseStateFragment
 import com.example.newsapiproject.data.util.Resource
+import com.example.newsapiproject.data.util.SwipeToDeleteCallBack
 import com.example.newsapiproject.databinding.FragmentSavedBinding
 import com.example.newsapiproject.presentation.main.MainActivity
 import com.example.newsapiproject.presentation.main.MainViewModel
@@ -43,11 +46,11 @@ class SavedFragment : Fragment(), BaseStateFragment {
     private fun getNewsList() {
         vm.getSavedArticleList()
         vm.savedList.observe(viewLifecycleOwner, Observer { resource ->
-            when(resource){
+            when (resource) {
                 is Resource.Loading -> showLoading()
                 is Resource.Success -> {
                     hideLoading()
-                    resource.data?.let{
+                    resource.data?.let {
                         val itemAdapter = ItemAdapter(it)
                         val layoutManager = LinearLayoutManager(requireContext())
                         binding.recyclerView.apply {
@@ -58,12 +61,31 @@ class SavedFragment : Fragment(), BaseStateFragment {
                                     )
                                 )
                             )
+                            val callback = object : SwipeToDeleteCallBack() {
+                                override fun onSwiped(
+                                    viewHolder: RecyclerView.ViewHolder,
+                                    direction: Int
+                                ) {
+                                    val positionFordb = itemAdapter.list[viewHolder.adapterPosition]
+                                    // delete
+                                    vm.deleteArticleById(positionFordb)
+                                    Log.d(
+                                        "debug",
+                                        "to delete -->id: ${positionFordb.id} title:  ${positionFordb.title}"
+                                    )
+                                    val positionForList = viewHolder.adapterPosition
+                                    itemAdapter.deleteItem(positionForList)
+                                }
+                            }
                             this.layoutManager = layoutManager
+                            val itemTouchHelper = ItemTouchHelper(callback)
+                            itemTouchHelper.attachToRecyclerView(this)
                             this.adapter = itemAdapter
                         }
                     }
                 }
-                else -> {}
+                else -> {
+                }
             }
         })
     }
